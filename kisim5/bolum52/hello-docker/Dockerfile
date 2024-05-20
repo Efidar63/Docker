@@ -6,7 +6,7 @@ FROM nginx:latest
 
 # label ile de key value pair olarak bu imajla ilgili bilgileri giriyoruz. her iki talimat da imajın içindeki sistemle alakalı değil.
 # her ikisi de imajın metadatasında saklanıyor. imajla alakali bilgiler. 
-LABEL maintainer="Ozgur Ozturk @ozgurozturknet"
+LABEL maintainer="Efidar @efidar"
 LABEL version="1.0"
 LABEL name="hello-docker"
 
@@ -38,4 +38,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 CMD curl 
 # Kullanici kelimesini $KULLANICI env variable'ının değeriyle Hostname kelimesini de $HOSTNAME ile değiştiriyor ve 
 # dosyanın içeriğini index.html'e adlı yeni bir dosyaya yazıyoruz.
 # ardından nginx daemon'ı çalıştırıyoruz
-CMD sed -e s/Kullanici/"$KULLANICI"/ Hello_docker.html > index1.html && sed -e s/Hostname/"$HOSTNAME"/ index1.html > index.html ; rm index1.html Hello_docker.html; nginx -g 'daemon off;'
+CMD sed -e s/Kullanici/"$KULLANICI"/ Hello_docker.html > index1.html &&\
+ sed -e s/Hostname/"$HOSTNAME"/ index1.html > index.html ; rm index1.html Hello_docker.html; nginx -g 'daemon off;'
